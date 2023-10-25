@@ -13,7 +13,7 @@ const petsLabels = computed(() => store.getters.getPetsLabels)
 <template>
   <table class="table">
     <TableRow :is-table-header="true" :data="petsLabels" />
-    <TableRow :key="i" v-for="(value, i) in pets.slice(0, 20)" :data="value" />
+    <TableRow :key="i" v-for="(value, i) in pets" :data="value" />
   </table>
 </template>
 

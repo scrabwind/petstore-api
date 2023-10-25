@@ -32,7 +32,7 @@ const status = computed(() => store.state.orderStatus)
     height: 100%;
     background-color: var(--primary);
     border-radius: 0.2rem;
-    padding: 8px 12px;
+    padding: 0.5rem 12px;
   }
 
   &-failed {
@@ -40,7 +40,7 @@ const status = computed(() => store.state.orderStatus)
     height: 100%;
     background-color: var(--destructive);
     border-radius: 0.2rem;
-    padding: 8px 12px;
+    padding: 0.5rem 12px;
   }
 }
 

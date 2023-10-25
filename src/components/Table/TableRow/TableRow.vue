@@ -19,13 +19,16 @@ defineProps<Props>()
   </tr>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .row {
-  $buy-button-size: 24px;
-
   display: grid;
-  grid-template-columns: repeat(6, calc((100% - $buy-button-size) / 6)) $buy-button-size;
-  padding: 8px;
+  grid-template-columns: repeat(6, 1fr) 1.5rem;
+  padding: 0.5rem;
+  gap: 0.5rem;
+
+  @media (width >= 760.5rem) {
+    gap: 2rem;
+  }
 }
 
 .row:nth-child(even) {

@@ -55,10 +55,10 @@ const clickHandler = () => {
 }
 
 .label {
-  padding: 8px 16px;
+  padding: 0.5rem 1rem;
   border: 2px solid var(--accent);
-  border-radius: 8px;
-  margin-right: 16px;
+  border-radius: 0.5rem;
+  margin-right: 1rem;
   transition: all 0.25s ease-in-out;
   user-select: none;
   cursor: pointer;
@@ -69,7 +69,7 @@ const clickHandler = () => {
   }
 
   &:has(input:checked) {
-    background-color: #3b82f6;
+    background-color: var(--button);
   }
 }
 
@@ -84,7 +84,7 @@ const clickHandler = () => {
     transition: scale 0.1s ease-in-out;
 
     &:hover {
-      color: #3b82f6;
+      color: var(--button);
       scale: 105%;
     }
   }

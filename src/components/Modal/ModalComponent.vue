@@ -64,7 +64,7 @@ const order = () => {
     position: fixed;
     width: 100vw;
     height: 100vh;
-    background-color: rgb(#171717, 50%);
+    background-color: rgb(var(--popover) 50%);
     left: 0;
     top: 0;
     display: flex;
@@ -73,10 +73,10 @@ const order = () => {
   }
 
   &-content {
-    padding: 32px;
+    padding: 2rem;
     width: 500px;
     height: 500px;
-    background-color: #1c1917;
+    background-color: var(--card);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(4, 1fr);
@@ -86,31 +86,31 @@ const order = () => {
 
   &-input {
     max-width: 100px;
-    background-color: #171717;
+    background-color: var(--popover);
     border: 1px solid var(--border);
     border-radius: 0.2rem;
-    margin-left: 8px;
+    margin-left: 0.5rem;
     color: var(--color-text);
-    padding: 4px 8px;
+    padding: 0.25rem 0.5rem;
     color-scheme: dark;
     text-overflow: ellipsis;
     outline: none;
 
     &:focus {
-      border: 1px solid #3b82f6;
+      border: 1px solid var(--button);
     }
   }
 
   &-button {
     place-self: center center;
-    padding: 8px 16px;
+    padding: 0.5rem 1rem;
     border: 2px solid var(--accent);
-    border-radius: 8px;
-    margin-right: 16px;
+    border-radius: 0.5rem;
+    margin-right: 1rem;
     transition: all 0.25s ease-in-out;
     user-select: none;
     color: var(--color-text);
-    background-color: #3b82f6;
+    background-color: var(--button);
     cursor: pointer;
 
     &:hover {

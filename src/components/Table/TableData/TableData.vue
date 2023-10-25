@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Pet } from '@/api'
-import BuyIcon from '@/assets/buy.svg?component'
+import BuyIcon from '@/assets/svg/buy.svg?component'
 import { ref } from 'vue'
 
 import ModalComponent from '@/components/Modal/ModalComponent.vue'
@@ -21,6 +21,7 @@ defineProps<Props>()
   <button class="button" v-if="data.status === 'available'" @click="isOpen = true">
     <BuyIcon fill="white" />
   </button>
+
   <ModalComponent v-if="isOpen" @close="isOpen = false" :pet="data" />
 </template>
 
@@ -39,5 +40,6 @@ defineProps<Props>()
   align-items: center;
   padding: 0;
   cursor: pointer;
+  place-self: center flex-end;
 }
 </style>
