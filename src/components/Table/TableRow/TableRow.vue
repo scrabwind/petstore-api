@@ -21,12 +21,14 @@ defineProps<Props>()
 
 <style lang="scss">
 .row {
+  $buy-button-size: 24px;
+
   display: grid;
-  grid-template-columns: repeat(6, 1fr) 80px;
+  grid-template-columns: repeat(6, calc((100% - $buy-button-size) / 6)) $buy-button-size;
   padding: 8px;
 }
 
 .row:nth-child(even) {
-  background-color: gray;
+  background-color: var(--secondary);
 }
 </style>
