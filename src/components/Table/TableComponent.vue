@@ -1,21 +1,19 @@
 <script setup lang="ts">
-import type { Pet } from '@/api'
+import { computed } from 'vue'
 import TableRow from './TableRow/TableRow.vue'
 
-type Props = {
-  data: Pet[]
-}
+import { usePetStore } from '@/store/pet'
 
-defineProps<Props>()
+const store = usePetStore()
+
+const pets = computed(() => store.getters.getPets)
+const petsLabels = computed(() => store.getters.getPetsLabels)
 </script>
 
 <template>
   <table class="table">
-    <TableRow
-      :is-table-header="true"
-      :data="['id', 'category', 'name', 'photoUrl', 'tags', 'status']"
-    />
-    <TableRow :key="i" v-for="(value, i) in data" :data="value" />
+    <TableRow :is-table-header="true" :data="petsLabels" />
+    <TableRow :key="i" v-for="(value, i) in pets.slice(0, 20)" :data="value" />
   </table>
 </template>
 
@@ -26,3 +24,4 @@ defineProps<Props>()
   flex-direction: column;
 }
 </style>
+@/store/pet

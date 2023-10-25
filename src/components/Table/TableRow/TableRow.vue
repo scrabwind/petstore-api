@@ -1,32 +1,25 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 import type { Pet } from '@/api/models/Pet'
 import TableHead from '@/components/Table/TableHead/TableHead.vue'
 import TableData from '@/components/Table/TableData/TableData.vue'
 
 type Props = {
-  isTableHeader?: boolean
-  data: Pet | string[]
+  labels?: string[]
+  data?: Pet
 }
 
-withDefaults(defineProps<Props>(), { isTableHeader: false })
+defineProps<Props>()
 </script>
 
 <template>
   <tr class="row">
-    <TableHead v-if="isTableHeader" :data="data as string[]" />
-    <TableData v-else :data="data as Pet" />
+    <TableHead v-if="labels?.length" :data="labels" />
+    <TableData v-else-if="data" :data="data" />
+    <span v-else>Failed to retrive data</span>
   </tr>
 </template>
 
 <style lang="scss">
-.nazwy {
-  border-bottom: 1px white solid;
-  border-radius: 2px;
-  padding-bottom: 4px;
-  margin-bottom: 4px;
-}
-
 .row {
   display: grid;
   grid-template-columns: repeat(6, 1fr) 80px;

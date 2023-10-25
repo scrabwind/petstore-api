@@ -1,24 +1,24 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { PetService } from '@/api/services/PetService'
-import type { Pet } from '@/api/models/Pet'
-import BuyIcon from '@/assets/buy.svg?component'
 import TableComponent from './components/Table/TableComponent.vue'
+import StatusToast from '@/components/Status/StatusToast.vue'
 
-const pets = ref<Pet[]>([])
+import { usePetStore } from '@/store/pet'
+
+const store = usePetStore()
 
 const selectedStatuses = ref<string[]>(['available', 'sold', 'pending'])
 
-const updateList = async () => {
-  return PetService.findPetsByStatus({ status: [selectedStatuses.value.join(',')] }) // workaround because api is bugged when it comes to query string array
+const updateList = () => {
+  store.dispatch('setPets', selectedStatuses.value)
 }
 
-onMounted(async () => {
-  pets.value = await updateList()
+onMounted(() => {
+  updateList()
 })
 
-const clickHandler = async () => {
-  pets.value = await updateList()
+const clickHandler = () => {
+  updateList()
 }
 </script>
 
@@ -56,8 +56,10 @@ const clickHandler = async () => {
           </th>
         </tr>
       </table> -->
-      <TableComponent :data="pets"></TableComponent>
+      <TableComponent />
     </main>
+
+    <StatusToast />
   </div>
 </template>
 
@@ -65,7 +67,7 @@ const clickHandler = async () => {
 .container {
   max-width: 1600px;
   margin: 0 auto;
-  padding: 32px 0;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -74,15 +76,15 @@ const clickHandler = async () => {
 
 .main {
   width: 100%;
-  padding-top: 32px;
+  padding-top: 2rem;
   text-align: left;
 }
 
 .nazwy {
   border-bottom: 1px white solid;
   border-radius: 2px;
-  padding-bottom: 4px;
-  margin-bottom: 4px;
+  padding-bottom: 0.25rem;
+  margin-bottom: 0.25rem;
 }
 
 // .rows {
@@ -95,3 +97,4 @@ const clickHandler = async () => {
 //   background-color: gray;
 // }
 </style>
+@/store/pet
