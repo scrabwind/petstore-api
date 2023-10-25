@@ -26,8 +26,10 @@ defineProps<Props>()
   padding: 0.5rem;
   gap: 0.5rem;
 
-  @media (width >= 760.5rem) {
-    gap: 2rem;
+  @media (width <= 760px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 1rem;
   }
 }
 

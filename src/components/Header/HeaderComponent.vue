@@ -52,6 +52,10 @@ const clickHandler = () => {
 .header {
   display: flex;
   justify-content: flex-start;
+
+  @media (width <= 760px) {
+    justify-content: center;
+  }
 }
 
 .label {
@@ -70,6 +74,11 @@ const clickHandler = () => {
 
   &:has(input:checked) {
     background-color: var(--button);
+  }
+
+  @media (width <= 375px) {
+    padding: 0.25rem 0.75rem;
+    margin-right: 0.5rem;
   }
 }
 

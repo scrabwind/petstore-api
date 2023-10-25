@@ -19,6 +19,10 @@ import HeaderComponent from '@/components/Header/HeaderComponent.vue'
   max-width: 1600px;
   margin: 0 auto;
   padding: 2rem;
+
+  @media (width <= 450px) {
+    padding: 2rem 1rem;
+  }
 }
 
 .main {
@@ -26,12 +30,4 @@ import HeaderComponent from '@/components/Header/HeaderComponent.vue'
   padding-top: 2rem;
   text-align: left;
 }
-
-.nazwy {
-  border-bottom: 1px white solid;
-  border-radius: 2px;
-  padding-bottom: 0.25rem;
-  margin-bottom: 0.25rem;
-}
 </style>
-@/store/pet

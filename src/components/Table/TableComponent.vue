@@ -12,7 +12,7 @@ const petsLabels = computed(() => store.getters.getPetsLabels)
 
 <template>
   <table class="table">
-    <TableRow :is-table-header="true" :data="petsLabels" />
+    <TableRow class="table-headers" :data="petsLabels" />
     <TableRow :key="i" v-for="(value, i) in pets" :data="value" />
   </table>
 </template>
@@ -23,5 +23,10 @@ const petsLabels = computed(() => store.getters.getPetsLabels)
   display: flex;
   flex-direction: column;
 }
+
+.table-headers {
+  @media (width <= 760px) {
+    display: none;
+  }
+}
 </style>
-@/store/pet
