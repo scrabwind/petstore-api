@@ -19,7 +19,7 @@ export const store = createStore<State>({
     orderStatus: 'none'
   },
   getters: {
-    getPets({ pets }) {
+    getAllPets({ pets }) {
       return pets?.map((pet) => {
         const { id, name, category, photoUrls, tags, status } = pet
 
@@ -41,13 +41,13 @@ export const store = createStore<State>({
     }
   },
   mutations: {
-    updatePets(state, payload) {
+    UPDATE_PETS(state, payload) {
       state.pets = payload
     },
-    updateStatus(state, status) {
+    UPDATE_ORDER_STATUS(state, status) {
       state.orderStatus = status
     },
-    clearStatus(state) {
+    CLEAR_ORDER_STATUS(state) {
       state.orderStatus = 'none'
     }
   },
@@ -57,7 +57,7 @@ export const store = createStore<State>({
       try {
         const pets = await PetService.findPetsByStatus({ status: [fixedStatuses] })
         console.log(pets)
-        commit('updatePets', pets)
+        commit('UPDATE_PETS', pets)
       } catch (error) {
         console.error(error)
       }
@@ -72,14 +72,14 @@ export const store = createStore<State>({
           body: { id, petId, quantity, status: 'placed', complete: false, shipDate: date }
         })
 
-        commit('updateStatus', 'success')
+        commit('UPDATE_ORDER_STATUS', 'success')
       } catch (error) {
         console.error(error)
-        commit('updateStatus', 'failed')
+        commit('UPDATE_ORDER_STATUS', 'failed')
       } finally {
         setTimeout(() => {
-          commit('clearStatus')
-        }, 2000)
+          commit('CLEAR_ORDER_STATUS')
+        }, 3000)
       }
     }
   }

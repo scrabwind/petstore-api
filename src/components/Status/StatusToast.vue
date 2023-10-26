@@ -16,7 +16,7 @@ const status = computed(() => store.state.orderStatus)
   </Transition>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .toast {
   &-container {
     position: absolute;
@@ -30,7 +30,7 @@ const status = computed(() => store.state.orderStatus)
   &-success {
     width: 100%;
     height: 100%;
-    background-color: var(--primary);
+    background-color: var(--toast-success);
     border-radius: 0.2rem;
     padding: 0.5rem 12px;
   }
@@ -38,19 +38,19 @@ const status = computed(() => store.state.orderStatus)
   &-failed {
     width: 100%;
     height: 100%;
-    background-color: var(--destructive);
+    background-color: var(--toast-error);
     border-radius: 0.2rem;
     padding: 0.5rem 12px;
   }
-}
 
-.toast-enter-active,
-.toast-leave-active {
-  transition: transform 0.5s ease-in-out;
-}
+  &-enter-active,
+  &-leave-active {
+    transition: transform 0.5s ease-in-out;
+  }
 
-.toast-enter-from,
-.toast-leave-to {
-  transform: translateY(calc(-100% - 1rem));
+  &-enter-from,
+  &-leave-to {
+    transform: translateY(calc(-100% - 1rem));
+  }
 }
 </style>

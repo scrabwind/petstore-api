@@ -6,7 +6,7 @@ import { usePetStore } from '@/store/pet'
 
 const store = usePetStore()
 
-const pets = computed(() => store.getters.getPets)
+const pets = computed(() => store.getters.getAllPets)
 const petsLabels = computed(() => store.getters.getPetsLabels)
 </script>
 
@@ -22,11 +22,11 @@ const petsLabels = computed(() => store.getters.getPetsLabels)
   width: 100%;
   display: flex;
   flex-direction: column;
-}
 
-.table-headers {
-  @media (width <= 760px) {
-    display: none;
+  &-headers {
+    @media (width <= $breakpoint-l) {
+      display: none;
+    }
   }
 }
 </style>

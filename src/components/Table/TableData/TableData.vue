@@ -37,7 +37,7 @@ onUnmounted(() => {
       {{ val }}
     </span>
   </td>
-  <button class="button" v-if="data.status === 'available'" @click="isOpen = true">
+  <button class="table-data-button" v-if="data.status === 'available'" @click="isOpen = true">
     <BuyIcon fill="white" />
   </button>
 
@@ -49,20 +49,20 @@ onUnmounted(() => {
   overflow: hidden;
   text-wrap: nowrap;
   text-overflow: ellipsis;
-}
 
-.button {
-  display: flex;
-  background: none;
-  border: none;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-  cursor: pointer;
-  place-self: center center;
+  &-button {
+    display: flex;
+    background: none;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    cursor: pointer;
+    place-self: center center;
 
-  @media (width <= 760px) {
-    grid-column: 1 / -1;
+    @media (width <= $breakpoint-l) {
+      grid-column: 1 / -1;
+    }
   }
 }
 </style>

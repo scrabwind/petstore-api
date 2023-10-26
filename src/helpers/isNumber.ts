@@ -1,24 +1,8 @@
 export const isNumber = (event: KeyboardEvent): void => {
-  const keysAllowed: string[] = [
-    '0',
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-    '9',
-    'Backspace',
-    'Delete',
-    'Copy',
-    'Paste',
-    'Cut'
-  ]
+  const keysAllowed: RegExp = /(Backspace|Delete|Copy|Paste|Cut|[0-9])/g
   const keyPressed: string = event.key
 
-  if (!keysAllowed.includes(keyPressed)) {
+  if (!keysAllowed.test(keyPressed)) {
     event.preventDefault()
   }
 }

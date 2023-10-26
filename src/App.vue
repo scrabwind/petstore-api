@@ -20,7 +20,7 @@ import HeaderComponent from '@/components/Header/HeaderComponent.vue'
   margin: 0 auto;
   padding: 2rem;
 
-  @media (width <= 450px) {
+  @media (width <= $breakpoint-m) {
     padding: 2rem 1rem;
   }
 }

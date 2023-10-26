@@ -13,7 +13,6 @@ const props = defineProps<{ pet: Pet }>()
 const store = usePetStore()
 
 const order = () => {
-  // alert(date.value)
   store.dispatch('orderPets', {
     petId: props.pet.id,
     data: date.value,
@@ -21,10 +20,6 @@ const order = () => {
   })
 
   emits('close')
-
-  setTimeout(() => {
-    store.commit('clearStatus')
-  })
 }
 </script>
 
@@ -32,11 +27,11 @@ const order = () => {
   <Teleport to="body">
     <div class="modal-container">
       <div class="modal-content">
-        <label class="label" for="date">
+        <label class="modal-label" for="date">
           <span>shipping date: </span>
           <input class="modal-input" id="date" name="date" type="date" v-model="date" />
         </label>
-        <label class="label" for="quantity">
+        <label for="quantity">
           <span>quantity: </span>
           <input
             class="modal-input"
@@ -47,7 +42,7 @@ const order = () => {
             @keypress="isNumber($event as KeyboardEvent)"
           />
         </label>
-        <label class="label" :key="key" v-for="(value, key) in pet" :for="key">
+        <label :key="key" v-for="(value, key) in pet" :for="key">
           <span>{{ `${key}: ` }}</span>
           <input class="modal-input" type="text" :name="key" :value="value" :id="key" disabled />
         </label>
@@ -58,13 +53,13 @@ const order = () => {
   </Teleport>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .modal {
   &-container {
     position: fixed;
     width: 100vw;
     height: 100vh;
-    background-color: rgb(var(--popover) 50%);
+    background-color: var(--modal-background);
     left: 0;
     top: 0;
     display: flex;
@@ -76,7 +71,7 @@ const order = () => {
     padding: 2rem;
     width: 500px;
     height: 500px;
-    background-color: var(--card);
+    background-color: var(--modal-foreground);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(4, 1fr);
@@ -86,8 +81,8 @@ const order = () => {
 
   &-input {
     max-width: 100px;
-    background-color: var(--popover);
-    border: 1px solid var(--border);
+    background-color: var(--modal-input);
+    border: 1px solid var(--border-secondary);
     border-radius: 0.2rem;
     margin-left: 0.5rem;
     color: var(--color-text);
@@ -104,7 +99,7 @@ const order = () => {
   &-button {
     place-self: center center;
     padding: 0.5rem 1rem;
-    border: 2px solid var(--accent);
+    border: 2px solid var(--border-primary);
     border-radius: 0.5rem;
     margin-right: 1rem;
     transition: all 0.25s ease-in-out;

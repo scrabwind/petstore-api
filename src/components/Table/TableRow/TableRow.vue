@@ -12,7 +12,7 @@ defineProps<Props>()
 </script>
 
 <template>
-  <tr class="row">
+  <tr class="table-row">
     <TableHead v-if="labels?.length" :data="labels" />
     <TableData v-else-if="data" :data="data" />
     <span v-else>Failed to retrive data</span>
@@ -20,20 +20,20 @@ defineProps<Props>()
 </template>
 
 <style scoped lang="scss">
-.row {
+.table-row {
   display: grid;
   grid-template-columns: repeat(6, 1fr) 1.5rem;
   padding: 0.5rem;
   gap: 0.5rem;
 
-  @media (width <= 760px) {
+  @media (width <= $breakpoint-l) {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(4, 1fr);
     gap: 1rem;
   }
-}
 
-.row:nth-child(even) {
-  background-color: var(--secondary);
+  &:nth-child(even) {
+    background-color: var(--table-secondary);
+  }
 }
 </style>

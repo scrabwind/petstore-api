@@ -25,8 +25,8 @@ const clickHandler = () => {
 <template>
   <header class="header">
     <label
-      class="label"
-      :class="{ 'label--checked': selectedStatuses.includes(status) }"
+      class="header-label"
+      :class="{ 'header-label--checked': selectedStatuses.includes(status) }"
       :for="status"
       v-for="status in availableStatuses"
       :key="status"
@@ -44,7 +44,7 @@ const clickHandler = () => {
       />
     </label>
 
-    <button class="filter-button" @click="clickHandler">Filter</button>
+    <button class="header-filter-button" @click="clickHandler">Filter</button>
   </header>
 </template>
 
@@ -53,37 +53,35 @@ const clickHandler = () => {
   display: flex;
   justify-content: flex-start;
 
-  @media (width <= 760px) {
+  @media (width <= $breakpoint-l) {
     justify-content: center;
   }
-}
 
-.label {
-  padding: 0.5rem 1rem;
-  border: 2px solid var(--accent);
-  border-radius: 0.5rem;
-  margin-right: 1rem;
-  transition: all 0.25s ease-in-out;
-  user-select: none;
-  cursor: pointer;
+  &-label {
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--border-primary);
+    border-radius: 0.5rem;
+    margin-right: 1rem;
+    transition: all 0.25s ease-in-out;
+    user-select: none;
+    cursor: pointer;
 
-  &:hover {
-    background-color: var(--secondary);
-    transform: scale(105%);
+    &:hover {
+      background-color: var(--table-secondary);
+      transform: scale(105%);
+    }
+
+    &:has(input:checked) {
+      background-color: var(--button);
+    }
+
+    @media (width <= $breakpoint-s) {
+      padding: 0.25rem 0.75rem;
+      margin-right: 0.5rem;
+    }
   }
 
-  &:has(input:checked) {
-    background-color: var(--button);
-  }
-
-  @media (width <= 375px) {
-    padding: 0.25rem 0.75rem;
-    margin-right: 0.5rem;
-  }
-}
-
-.filter {
-  &-button {
+  &-filter-button {
     background: none;
     color: inherit;
     border: none;
