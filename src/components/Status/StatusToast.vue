@@ -9,7 +9,7 @@ const status = computed(() => store.state.orderStatus)
 
 <template>
   <Transition name="toast">
-    <div class="toast-container" v-if="!(status === 'none')">
+    <div class="toast-container" v-if="status !== 'none'">
       <div v-if="status === 'success'" class="toast-success">Successfuly placed an order</div>
       <div v-else class="toast-failed">Something went wrong</div>
     </div>

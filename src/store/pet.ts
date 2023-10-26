@@ -56,7 +56,6 @@ export const store = createStore<State>({
       const fixedStatuses: string = status.join(',') // Api fix since & character doesn't work there
       try {
         const pets = await PetService.findPetsByStatus({ status: [fixedStatuses] })
-        console.log(pets)
         commit('UPDATE_PETS', pets)
       } catch (error) {
         console.error(error)

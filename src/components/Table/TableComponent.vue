@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import TableRow from './TableRow/TableRow.vue'
 
 import { usePetStore } from '@/store/pet'
+import TableData from './TableData/TableData.vue'
 
 const store = usePetStore()
 
@@ -12,8 +12,16 @@ const petsLabels = computed(() => store.getters.getPetsLabels)
 
 <template>
   <table class="table">
-    <TableRow class="table-headers" :data="petsLabels" />
-    <TableRow :key="i" v-for="(value, i) in pets" :data="value" />
+    <thead>
+      <tr>
+        <th :key="label" v-for="label in petsLabels">{{ label }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr :key="key" class="table-row" v-for="(value, key) in pets">
+        <TableData :data="value" />
+      </tr>
+    </tbody>
   </table>
 </template>
 
@@ -26,6 +34,23 @@ const petsLabels = computed(() => store.getters.getPetsLabels)
   &-headers {
     @media (width <= $breakpoint-l) {
       display: none;
+    }
+  }
+
+  &-row {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr) 1.5rem;
+    padding: 0.5rem;
+    gap: 0.5rem;
+
+    @media (width <= $breakpoint-l) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    &:nth-child(even) {
+      background-color: var(--table-secondary);
     }
   }
 }

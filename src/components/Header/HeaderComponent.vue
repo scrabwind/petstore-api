@@ -16,10 +16,6 @@ const updateList = () => {
 onMounted(() => {
   updateList()
 })
-
-const clickHandler = () => {
-  updateList()
-}
 </script>
 
 <template>
@@ -44,7 +40,7 @@ const clickHandler = () => {
       />
     </label>
 
-    <button class="header-filter-button" @click="clickHandler">Filter</button>
+    <button class="header-filter-button" @click="updateList">Filter</button>
   </header>
 </template>
 
