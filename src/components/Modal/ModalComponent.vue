@@ -73,8 +73,9 @@ const order = () => {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    place-items: flex-start flex-start;
+    place-items: flex-start;
     text-wrap: nowrap;
+    border-radius: 8px;
   }
 
   &-input {
@@ -84,10 +85,14 @@ const order = () => {
     border-radius: 0.2rem;
     margin-left: 0.5rem;
     color: var(--color-text);
-    padding: 0.25rem 0.5rem;
     color-scheme: dark;
     text-overflow: ellipsis;
     outline: none;
+    padding: 0.5rem;
+
+    &:disabled {
+      color: var(--text-disabled);
+    }
 
     &:focus {
       border: 1px solid var(--button);

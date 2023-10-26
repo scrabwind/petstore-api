@@ -1,5 +1,6 @@
 :root {
   --color-text: #f2f2f2;
+  --text-disabled: #6b7280;
   --background: #0c0a09;
   --button: #3b82f6;
   --table-secondary: #27272a;
@@ -7,7 +8,7 @@
   --border-secondary: #27272a;
   --toast-success: #22c55e;
   --toast-error: #e11d48;
-  --modal-foreground: #1c1917;
+  --modal-foreground: #27272a;
   --modal-input: #171717;
   --modal-background: #17171780;
 }
