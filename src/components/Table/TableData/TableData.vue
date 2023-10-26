@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { Pet } from '@/api'
-import BuyIcon from '@/assets/svg/buy.svg?component'
 import { ref } from 'vue'
 
+import { type Pet } from '@/api'
 import ModalComponent from '@/components/Modal/ModalComponent.vue'
+import BuyIcon from '@/assets/svg/buy.svg?component'
 
 const isOpen = ref(false)
 

@@ -1,9 +1,9 @@
 // store.ts
-import type { InjectionKey } from 'vue'
+import { type InjectionKey } from 'vue'
 import { Store, createStore, useStore as baseUseStore } from 'vuex'
 
+import { type Pet } from '@/api/models/Pet'
 import { PetService } from '@/api/services/PetService'
-import type { Pet } from '@/api/models/Pet'
 import { StoreService } from '@/api/services/StoreService'
 
 export interface State {

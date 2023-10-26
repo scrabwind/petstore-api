@@ -1,17 +1,15 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { usePetStore } from '@/store/pet'
 
+import { type Pet } from '@/api'
+import { usePetStore } from '@/store/pet'
 import { isNumber } from '@/helpers/isNumber'
-import type { Pet } from '@/api'
 
 const date = ref<string>()
 const quantity = ref<number>(1)
 const emits = defineEmits<{ (e: 'close'): void }>()
 const props = defineProps<{ pet: Pet }>()
-
 const store = usePetStore()
-
 const order = () => {
   store.dispatch('orderPets', {
     petId: props.pet.id,

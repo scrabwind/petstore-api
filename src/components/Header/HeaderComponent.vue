@@ -4,11 +4,8 @@ import { onMounted, ref } from 'vue'
 import { usePetStore } from '@/store/pet'
 
 const store = usePetStore()
-
 const availableStatuses = ['available', 'sold', 'pending']
-
 const selectedStatuses = ref<string[]>(availableStatuses)
-
 const updateList = () => {
   store.dispatch('setPets', selectedStatuses.value)
 }

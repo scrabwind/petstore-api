@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
+import TableData from '@/components/Table/TableData/TableData.vue'
 import { usePetStore } from '@/store/pet'
-import TableData from './TableData/TableData.vue'
 
 const store = usePetStore()
-
 const pets = computed(() => store.getters.getAllPets)
 const petsLabels = computed(() => store.getters.getPetsLabels)
 </script>

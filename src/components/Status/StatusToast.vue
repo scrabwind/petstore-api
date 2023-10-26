@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { usePetStore } from '@/store/pet'
 import { computed } from 'vue'
 
-const store = usePetStore()
+import { usePetStore } from '@/store/pet'
 
+const store = usePetStore()
 const status = computed(() => store.state.orderStatus)
 </script>
 

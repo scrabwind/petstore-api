@@ -1,8 +1,8 @@
-import './assets/main.css'
-import { store, key } from '@/store/pet'
-
 import { createApp } from 'vue'
-import App from './App.vue'
+import App from '@/App.vue'
+
+import '@/assets/main.css'
+import { store, key } from '@/store/pet'
 
 const app = createApp(App)
 
