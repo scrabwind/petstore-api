@@ -12,7 +12,7 @@ const petsLabels = computed(() => store.getters.getPetsLabels)
 <template>
   <table class="table">
     <thead>
-      <tr>
+      <tr class="table-row">
         <th :key="label" v-for="label in petsLabels">{{ label }}</th>
       </tr>
     </thead>
@@ -27,8 +27,9 @@ const petsLabels = computed(() => store.getters.getPetsLabels)
 <style scoped lang="scss">
 .table {
   width: 100%;
-  display: flex;
-  flex-direction: column;
+
+  // display: flex;
+  // flex-direction: column;
 
   &-headers {
     @media (width <= $breakpoint-l) {

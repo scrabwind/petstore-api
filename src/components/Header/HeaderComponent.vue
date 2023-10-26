@@ -64,7 +64,7 @@ onMounted(() => {
       transform: scale(105%);
     }
 
-    &:has(input:checked) {
+    &--checked {
       background-color: var(--button);
     }
 
